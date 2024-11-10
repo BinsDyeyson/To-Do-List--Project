@@ -1,0 +1,31 @@
+
+<style>
+
+	body{
+		background-color: #fff;
+		margin: 0;
+    	text-align: center;
+    	margin-top: 15px;
+	}
+	.center{
+		border: 10;
+		width: 400px;
+		box-shadow: 0 0 5px 3px rgba(0, 0, 0, .2);
+		margin: 30px auto;
+		border-radius: 10px;
+		padding: 15px;
+	}
+    .btnSubmit{
+        margin-top: 3%;
+    }
+</style>
+
+<div class="center">
+    <h1>Update Task</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form}}
+        <input class="btnSubmit" type="submit" name="Update Task" />
+    </form>
+</div>

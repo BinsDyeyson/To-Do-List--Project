@@ -1,0 +1,35 @@
+<style>
+
+	body{
+		background-color: #fff;
+		margin: 0;
+    	text-align: center;
+    	margin-top: 15px;
+	}
+	.center{
+		border: 10;
+		width: 400px;
+		box-shadow: 0 0 5px 3px rgba(0, 0, 0, .2);
+		margin: 30px auto;
+		border-radius: 10px;
+		padding: 15px;
+	}
+	.btnSubmit{
+		display: block;
+		margin-left: 40%;
+	}
+	.btnCancel{
+		display: inline-block;
+		margin-left: -5%;
+		margin-top: 3%;
+	}
+</style>
+
+<div class="center">
+    <p style="text-align: center;">Are you sure you want to delete {{item}}?</p>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input class="btnSubmit" type="submit" name="Confirm"/>
+        <a class="btnCancel"" href="{% url 'list' %}">Cancel</a>
+    </form>
+</div>

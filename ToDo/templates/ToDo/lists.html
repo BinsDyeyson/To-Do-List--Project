@@ -1,0 +1,94 @@
+<style>
+
+	body{
+		background-color: #fff;
+		margin: 0;
+    	text-align: center;
+    	margin-top: 15px;
+	}
+	.center{
+		border: 10;
+		width: 400px;
+		box-shadow: 0 0 5px 3px rgba(0, 0, 0, .2);
+		margin: 30px auto;
+		border-radius: 10px;
+		padding: 15px;
+	}
+	.item{
+	display: block;
+    width: 91%;
+    outline: none;
+    padding: 15px 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+	font-weight: bold;
+	background-color: rgb(235, 225, 225);
+	}
+	.btnUpdate{
+	width: 20%;
+	display: block;
+	text-decoration: none;
+    background-color: #1877f2;
+    padding: 5px 5px;
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+	margin-left: 39%;
+	}
+	.btnDelete{
+	width: 20%;
+	text-decoration: none;
+	display: block;
+    background-color: #1877f2;
+    padding: 5px 5px;
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+	margin-left: 39%;
+	}
+	.btnDelete:hover{
+		background-color: red;
+	}
+	.btnUpdate:hover{
+		background-color: blue;
+	}
+
+</style>
+
+
+
+<div class="center">
+    <h1 style="text-align: center;">To-Do-Lists</h1>
+
+    <form method="POST" action="/">
+        {% csrf_token %}
+        {{Form.title}}
+        <input class="btnSubmit" type="submit", name="Create Task"/>
+    </form>
+
+    {% for task in Task %}
+        <div class="item">
+
+			{% if task.complete == True %}
+            <del>{{task}}</del>
+            {% else %}
+            <span>{{task}}</span>
+            {% endif %}
+
+            <a class="btnUpdate" href="{% url 'updateTask' task.id %}">Update</a>
+            <a class="btnDelete"  href="{% url 'deleteTask' task.id %}">Delete</a>
+
+        </div>
+    {% endfor %}
+
+</div>
